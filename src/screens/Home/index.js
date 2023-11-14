@@ -45,7 +45,9 @@ export const HomeScreen = ({ navigation }) => {
         placeholder="Ex: nomesobrenome"
         autoCapitalize="none"
       />
-      <Button onClick={onClickContinue} marginTop={14} text="Avançar" />
+      <Button onClick={onClickContinue} marginTop={14}>
+        Avançar
+      </Button>
       <StatusBar style="auto" />
     </View>
   );

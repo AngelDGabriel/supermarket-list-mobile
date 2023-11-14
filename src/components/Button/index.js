@@ -1,13 +1,13 @@
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { colors, px } from "../../theme";
 
-export const Button = ({ text, marginTop, onClick }) => {
+export const Button = ({ children, marginTop, onClick }) => {
   return (
     <TouchableOpacity
       onPress={onClick}
       style={{ ...styles.buttonContainer, marginTop: marginTop || 0 }}
     >
-      <Text style={styles.buttonText}>{text}</Text>
+      <Text style={styles.buttonText}>{children}</Text>
     </TouchableOpacity>
   );
 };

@@ -13,7 +13,7 @@ export const ListCard = ({ name, quantity, checked }) => {
       <TouchableOpacity
         style={{
           ...styles.checkedContainer,
-          backgroundColorcolors: checked ? colors.primary : colors.light,
+          backgroundColor: checked ? colors.primary : colors.light,
         }}
       >
         {checked && <Feather name="check" size={px(16)} color={colors.white} />}

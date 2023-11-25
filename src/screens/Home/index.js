@@ -42,7 +42,7 @@ export const HomeScreen = ({ navigation }) => {
         value={username}
         onChangeText={setUsername}
         label="Username"
-        placeholder="Ex: nomesobrenome"
+        placeholder="Ex: myname"
         autoCapitalize="none"
       />
       <Button onClick={onClickContinue} marginTop={14}>

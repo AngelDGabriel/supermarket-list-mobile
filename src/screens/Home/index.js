@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Image, Text, Alert } from "react-native";
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
-import homeImage from "../../../assets/shopping-bag.png";
-import { USERNAME_DB_KEY } from "../../services/constants";
-import { saveData } from "../../services/db";
-import { px } from "../../theme";
+import { Buttonn, Input } from "~/components";
+import homeImage from "~/../assets/shopping-bag.png";
+import { USERNAME_DB_KEY } from "~/services/constants";
+import { saveData } from "~/services/db";
+import { px } from "~/theme";
 
 export const HomeScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");

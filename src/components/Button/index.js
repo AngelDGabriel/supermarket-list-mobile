@@ -1,14 +1,14 @@
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import { EvilIcons } from "@expo/vector-icons";
-import { colors, px } from "~/theme";
+import { TouchableOpacity, Text, StyleSheet } from "react-native"
+import { EvilIcons } from "@expo/vector-icons"
+import { colors, px } from "~/theme"
 
-const handleVariant = (variant) => {
+const handleVariant = variant => {
   if (variant === "outline") {
     return {
       backgroundColor: colors.light,
       borderColor: colors.primary,
       textColor: colors.primary,
-    };
+    }
   }
 
   if (variant === "ghost") {
@@ -16,15 +16,15 @@ const handleVariant = (variant) => {
       backgroundColor: "transparent",
       borderColor: "transparent",
       textColor: colors.primary,
-    };
+    }
   }
 
   return {
     backgroundColor: colors.primary,
     borderColor: colors.primary,
     textColor: colors.white,
-  };
-};
+  }
+}
 
 export const Button = ({
   children,
@@ -61,8 +61,8 @@ export const Button = ({
         {children}
       </Text>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   buttonContainer: {
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: colors.white,
   },
-});
+})

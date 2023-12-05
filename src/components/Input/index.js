@@ -1,5 +1,5 @@
-import { TextInput, View, Text, StyleSheet } from "react-native";
-import { colors, px } from "~/theme";
+import { TextInput, View, Text, StyleSheet } from "react-native"
+import { colors, px } from "~/theme"
 
 export const Input = ({
   label,
@@ -19,8 +19,8 @@ export const Input = ({
         {...props}
       />
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
   textInput: {
     fontSize: px(16),
   },
-});
+})

@@ -1,6 +1,6 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { px, colors } from "~/theme";
-import { Feather } from "@expo/vector-icons";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
+import { px, colors } from "~/theme"
+import { Feather } from "@expo/vector-icons"
 
 export const ListCard = ({
   name,
@@ -40,8 +40,8 @@ export const ListCard = ({
         <Feather name="chevron-right" size={px(24)} color={colors.primary} />
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   cardContainer: {
@@ -84,4 +84,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-});
+})

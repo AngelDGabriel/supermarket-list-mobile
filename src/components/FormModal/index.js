@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import {
   Modal,
   View,
@@ -6,44 +6,44 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
-} from "react-native";
-import { EvilIcons } from "@expo/vector-icons";
-import { Button } from "../Button";
-import { Input } from "../Input";
-import { colors, px } from "~/theme";
-import { addItem, deleteItem, updateItem } from "~/services/api/requests";
+} from "react-native"
+import { EvilIcons } from "@expo/vector-icons"
+import { Button } from "../Button"
+import { Input } from "../Input"
+import { colors, px } from "~/theme"
+import { addItem, deleteItem, updateItem } from "~/services/api/requests"
 
 export const FormModal = ({ visible, onClose, selectedItem }) => {
-  const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState(1);
+  const [name, setName] = useState("")
+  const [quantity, setQuantity] = useState(1)
 
   const closeModal = () => {
-    setName("");
-    setQuantity(1);
-    onClose();
-  };
+    setName("")
+    setQuantity(1)
+    onClose()
+  }
 
   const onIncreaseQuantity = () => {
-    setQuantity(quantity + 1);
-  };
+    setQuantity(quantity + 1)
+  }
 
   const onDecreaseQuantity = () => {
-    setQuantity(quantity - 1);
-  };
+    setQuantity(quantity - 1)
+  }
 
   const onDelete = async () => {
-    const result = await deleteItem(selectedItem?._id);
+    const result = await deleteItem(selectedItem?._id)
     if (result?.error) {
-      Alert.alert("Erro ao excluir item.", "Por favor, tente novamente.");
-      return;
+      Alert.alert("Erro ao excluir item.", "Por favor, tente novamente.")
+      return
     }
-    closeModal();
-  };
+    closeModal()
+  }
 
   const onSave = async () => {
     if (name.length <= 3) {
-      Alert.alert("Nome do item deve conter mais do que 3 caracteres");
-      return;
+      Alert.alert("Nome do item deve conter mais do que 3 caracteres")
+      return
     }
 
     const result = (await selectedItem)
@@ -55,25 +55,25 @@ export const FormModal = ({ visible, onClose, selectedItem }) => {
       : addItem({
           name,
           quantity,
-        });
+        })
 
     if (result?.error) {
-      Alert.alert("Erro ao salvar item, por favor, tente novamente");
-      return;
+      Alert.alert("Erro ao salvar item, por favor, tente novamente")
+      return
     }
 
-    closeModal();
-  };
+    closeModal()
+  }
 
   useEffect(() => {
     if (selectedItem && selectedItem?._id) {
-      setName(selectedItem.name);
-      setQuantity(selectedItem.quantity);
+      setName(selectedItem.name)
+      setQuantity(selectedItem.quantity)
     } else {
-      setName("");
-      setQuantity(1);
+      setName("")
+      setQuantity(1)
     }
-  }, [selectedItem]);
+  }, [selectedItem])
 
   return (
     <Modal
@@ -142,8 +142,8 @@ export const FormModal = ({ visible, onClose, selectedItem }) => {
         </View>
       </View>
     </Modal>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   modalContainer: {
@@ -219,4 +219,4 @@ const styles = StyleSheet.create({
     fontSize: px(56),
     fontWeight: "bold",
   },
-});
+})

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import {
   SafeAreaView,
   View,
@@ -6,67 +6,67 @@ import {
   StyleSheet,
   FlatList,
   Alert,
-} from "react-native";
-import { getData, USERNAME_DB_KEY, getItems, updateItem } from "~/services/db";
-import { colors, px } from "~/theme";
-import { ListCard, Button, Loader, FormModal } from "~/components";
+} from "react-native"
+import { getData, USERNAME_DB_KEY, getItems, updateItem } from "~/services/db"
+import { colors, px } from "~/theme"
+import { ListCard, Button, Loader, FormModal } from "~/components"
 
 export const MarketListScreen = ({ navigation }) => {
-  const [selectedItem, setSelectItem] = useState();
-  const [modalVisible, setModalVisible] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState("");
-  const [marketList, setMarketList] = useState([]);
+  const [selectedItem, setSelectItem] = useState()
+  const [modalVisible, setModalVisible] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [username, setUsername] = useState("")
+  const [marketList, setMarketList] = useState([])
 
   const getUsernameList = async () => {
-    setLoading(true);
-    const result = await getData(USERNAME_DB_KEY);
+    setLoading(true)
+    const result = await getData(USERNAME_DB_KEY)
     if (result?.error) {
-      Alert.alert("Falha ao retornar username");
-      return;
+      Alert.alert("Falha ao retornar username")
+      return
     }
-    setUsername(result);
-    const list = await getItems();
+    setUsername(result)
+    const list = await getItems()
     if (list?.error) {
-      Alert.alert("Falha ao retornar lista do banco de dados");
-      return;
+      Alert.alert("Falha ao retornar lista do banco de dados")
+      return
     }
-    setMarketList(list);
-    setLoading(false);
-  };
+    setMarketList(list)
+    setLoading(false)
+  }
 
   const onClickChangeUsername = () => {
-    navigation.goBack();
-  };
+    navigation.goBack()
+  }
 
   useEffect(() => {
     if (modalVisible === false) {
-      getUsernameList();
+      getUsernameList()
     }
-  }, [modalVisible]);
+  }, [modalVisible])
 
-  const onClickItem = (item) => {
-    setSelectItem(item);
-    setModalVisible(true);
-  };
+  const onClickItem = item => {
+    setSelectItem(item)
+    setModalVisible(true)
+  }
 
   const onCloseModal = async () => {
-    setSelectItem(null);
-    setModalVisible(false);
-  };
+    setSelectItem(null)
+    setModalVisible(false)
+  }
 
-  const onCheckItem = async (item) => {
+  const onCheckItem = async item => {
     const result = await updateItem(item._id, {
       ...item,
       checked: !item.checked,
-    });
+    })
     if (result?.error) {
-      Alert.alert("Falha ao atualizar item.", "Por favor, tente novamente.");
-      return;
+      Alert.alert("Falha ao atualizar item.", "Por favor, tente novamente.")
+      return
     }
 
-    getUsernameList();
-  };
+    getUsernameList()
+  }
 
   return (
     <SafeAreaView style={styles.safeAreaContainer}>
@@ -86,7 +86,7 @@ export const MarketListScreen = ({ navigation }) => {
             {...item}
           />
         )}
-        keyExtractor={(item) => item._id}
+        keyExtractor={item => item._id}
         ListEmptyComponent={() =>
           !loading && (
             <View style={styles.emptyContainer}>
@@ -118,8 +118,8 @@ export const MarketListScreen = ({ navigation }) => {
         onClose={onCloseModal}
       />
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   safeAreaContainer: {
@@ -169,4 +169,4 @@ const styles = StyleSheet.create({
   flatListContentContainer: {
     paddingBottom: px(100),
   },
-});
+})
